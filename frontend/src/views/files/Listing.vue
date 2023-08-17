@@ -1,22 +1,10 @@
 <template>
   <div>
     <header-bar showMenu showLogo>
-      <search /> <title />
-      <action
-        class="search-button"
-        icon="search"
-        :label="$t('buttons.search')"
-        @action="openSearch()"
-      />
-
+      
       <template #actions>
         <template v-if="!isMobile">
-          <action
-            v-if="headerButtons.share"
-            icon="share"
-            :label="$t('buttons.share')"
-            show="share"
-          />
+          
           <action
             v-if="headerButtons.rename"
             icon="mode_edit"
