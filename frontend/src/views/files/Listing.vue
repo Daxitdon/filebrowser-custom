@@ -28,13 +28,13 @@
             :label="$t('buttons.rename')"
             show="rename"
           />
-          <action
+          <!-- <action
             v-if="headerButtons.copy"
             id="copy-button"
             icon="content_copy"
             :label="$t('buttons.copyFile')"
             show="copy"
-          />
+          /> -->
           <action
             v-if="headerButtons.move"
             id="move-button"
@@ -51,12 +51,12 @@
           />
         </template>
 
-        <action
+        <!-- <action
           v-if="headerButtons.shell"
           icon="code"
           :label="$t('buttons.shell')"
           @action="$store.commit('toggleShell')"
-        />
+        /> -->
         <action
           :icon="viewIcon"
           :label="$t('buttons.switchView')"
@@ -69,13 +69,13 @@
           @action="download"
           :counter="selectedCount"
         />
-        <action
+        <!-- <action
           v-if="headerButtons.upload"
           icon="file_upload"
           id="upload-button"
           :label="$t('buttons.upload')"
           @action="upload"
-        />
+        /> -->
         <action icon="info" :label="$t('buttons.info')" show="info" />
         <action
           icon="check_circle"
@@ -87,24 +87,24 @@
 
     <div v-if="isMobile" id="file-selection">
       <span v-if="selectedCount > 0">{{ selectedCount }} selected</span>
-      <action
+      <!-- <action
         v-if="headerButtons.share"
         icon="share"
         :label="$t('buttons.share')"
         show="share"
-      />
+      /> -->
       <action
         v-if="headerButtons.rename"
         icon="mode_edit"
         :label="$t('buttons.rename')"
         show="rename"
       />
-      <action
+      <!-- <action
         v-if="headerButtons.copy"
         icon="content_copy"
         :label="$t('buttons.copyFile')"
         show="copy"
-      />
+      /> -->
       <action
         v-if="headerButtons.move"
         icon="forward"
