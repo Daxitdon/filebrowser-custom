@@ -34,7 +34,7 @@
       </div>
 
       <div>
-        <button
+        <!-- <button
           class="action"
           @click="toSettings"
           :aria-label="$t('sidebar.settings')"
@@ -42,7 +42,7 @@
         >
           <i class="material-icons">settings_applications</i>
           <span>{{ $t("sidebar.settings") }}</span>
-        </button>
+        </button> -->
 
         <button
           v-if="canLogout"
