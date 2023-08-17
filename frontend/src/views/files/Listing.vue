@@ -280,7 +280,7 @@ import throttle from "lodash.throttle";
 
 import HeaderBar from "@/components/header/HeaderBar";
 import Action from "@/components/header/Action";
-import Search from "@/components/Search";
+// import Search from "@/components/Search";
 import Item from "@/components/files/ListingItem";
 
 export default {
@@ -288,7 +288,7 @@ export default {
   components: {
     HeaderBar,
     Action,
-    Search,
+    // Search,
     Item,
   },
   data: function () {
