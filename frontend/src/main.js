@@ -16,13 +16,13 @@ sync(store, router);
 async function start() {
   window.addEventListener('load', function() {
     var currentUrl = window.location.href;
-  
+    window.parent.postMessage("😄")
     window.parent.postMessage(currentUrl, '*');
   });
   
   window.addEventListener('hashchange', function() {
     var currentUrl = window.location.href;
-    
+    window.parent.postMessage("😂")
     window.parent.postMessage(currentUrl, '*');  
   });
 
