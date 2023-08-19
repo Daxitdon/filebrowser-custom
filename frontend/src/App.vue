@@ -17,7 +17,17 @@ export default {
     setTimeout(function () {
       loading.parentNode.removeChild(loading);
     }, 200);
+
+    // Add event listeners for URL changes
+    window.addEventListener('load', this.onUrlChange);
+    window.addEventListener('hashchange', this.onUrlChange);
   },
+  methods: {
+    onUrlChange() {
+      // Send URL to parent window
+      window.parent.postMessage(window.location.href, '*'); 
+    }
+  }
 };
 </script>
 
