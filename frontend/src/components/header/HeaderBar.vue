@@ -1,17 +1,6 @@
 <template>
   <header>
-  
     <img v-if="showLogo !== undefined" :src="logoURL" />
-  <!--
-    <action
-      v-if="showMenu !== undefined"
-      class="menu-button"
-      icon="menu"
-      :label="$t('buttons.toggleSidebar')"
-      @action="openSidebar()"
-    />
-  -->
-
     <slot />
 
     <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
@@ -31,12 +20,16 @@
       v-show="this.$store.state.show == 'more'"
       @click="$store.commit('closeHovers')"
     />
+
+    <div>
+      <input v-model="downloadLink" placeholder="Paste link here" />
+      <button @click="downloadFile">Download</button>
+    </div>
   </header>
 </template>
 
 <script>
 import { logoURL } from "@/utils/constants";
-
 import Action from "@/components/header/Action";
 
 export default {
@@ -48,14 +41,30 @@ export default {
   data: function () {
     return {
       logoURL,
+      downloadLink: '',
     };
   },
   methods: {
     openSidebar() {
       this.$store.commit("showHover", "sidebar");
     },
+    downloadFile() {
+      fetch(this.downloadLink)
+        .then(response => response.blob())
+        .then(blob => {
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = this.downloadLink.split('/').pop();
+          link.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(console.error);
+    },
   },
 };
 </script>
 
 <style></style>
+
+
