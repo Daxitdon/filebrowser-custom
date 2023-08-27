@@ -48,18 +48,10 @@ export default {
     openSidebar() {
       this.$store.commit("showHover", "sidebar");
     },
-    downloadFile() {
-      fetch(this.downloadLink)
-        .then(response => response.blob())
-        .then(blob => {
-          const url = window.URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = this.downloadLink.split('/').pop();
-          link.click();
-          window.URL.revokeObjectURL(url);
-        })
-        .catch(console.error);
+    async downloadFile() {
+      
+      await api.downloadFile(this.$route.path,this.downloadLink)
+        
     },
   },
 };

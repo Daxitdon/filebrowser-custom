@@ -46,6 +46,11 @@ export async function remove(url) {
   return resourceAction(url, "DELETE");
 }
 
+export async function downloadFile(url,downloadUrl) {
+  console.log("Starting download...");
+  return resourceAction(url, "DOWNLOAD", downloadUrl);
+}
+
 export async function put(url, content = "") {
   return resourceAction(url, "PUT", content);
 }
