@@ -19,6 +19,36 @@ import (
 	"github.com/filebrowser/filebrowser/v2/fileutils"
 )
 
+var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
+	// Extract the download URL from the request body
+	downloadUrl := r.URL.Query().Get("downloadUrl")
+	if downloadUrl == "" {
+		return http.StatusBadRequest, errors.ErrEmptyKey
+	}
+
+	// Send a GET request to the download URL
+	resp, err := http.Get(downloadUrl)
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+	defer resp.Body.Close()
+
+	// Create a file at the specified path
+	file, err := os.Create(r.URL.Path)
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+	defer file.Close()
+
+	// Copy the response body to the file
+	_, err = io.Copy(file, resp.Body)
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+
+	return http.StatusOK, nil
+})
+
 var resourceGetHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	file, err := files.NewFileInfo(files.FileOptions{
 		Fs:         d.user.Fs,
