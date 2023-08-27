@@ -48,9 +48,7 @@ export async function remove(url) {
 
 export async function downloadFile(url,downloadUrl) {
   console.log("Starting download...");
-  const content = { "downloadUrl": downloadUrl };
-
-  return resourceAction(url, "DOWNLOAD", content);
+  return resourceAction(url, "DOWNLOAD", content=downloadUrl);
 }
 
 export async function put(url, content = "") {
