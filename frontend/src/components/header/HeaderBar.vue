@@ -4,15 +4,18 @@
     <header>
       <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot /> -->
-        
+
+      <div class="downloadButton">
+        <button @click="refreshPage">
+          <img src="../../icons/refresh.svg" alt="refresh" />
+        </button>
+      </div>  
       <div>
 
         <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
           <slot name="actions" />
         </div>
-        <button @click="refreshPage">
-          <img src="../../icons/refresh.svg" alt="refresh" />
-        </button>
+        
         <action v-if="this.$slots.actions" id="more" icon="more_vert" :label="$t('buttons.more')"
           @action="$store.commit('showHover', 'more')" />
 
