@@ -34,8 +34,24 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 	}
 	defer resp.Body.Close()
 
+	// Check the final URL after all redirects
+	finalUrl := resp.Request.URL.String()
+
+	// Extract the file name from the final URL
+	parsedUrl, err := url.Parse(finalUrl)
+	if err != nil {
+		return http.StatusInternalServerError, fmt.Errorf("Error parsing final URL: %v", err)
+	}
+	fileName := path.Base(parsedUrl.Path)
+
+	// Specify the directory where the file should be saved
+	directory := r.URL.Path
+
+	// Join the directory path with the file name
+	filePath := path.Join(directory, fileName)
+
 	// Create a file at the specified path
-	file, err := os.Create(r.URL.Path)
+	file, err := os.Create(filePath)
 	if err != nil {
 		return http.StatusInternalServerError, err
 	}
