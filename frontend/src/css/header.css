@@ -77,11 +77,13 @@ header title {
   color: white;
   padding: 12px 30px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
+  background-color: #bababa;
+
 
 }
 
-header .downloadBox button:hover {
+.downloadBox button:hover {
   background-color: #2ecc71;
   
 }
