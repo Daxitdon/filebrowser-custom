@@ -45,18 +45,23 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 
 	// Extract the Content-Disposition header from the response
 	contentDisposition := resp.Header.Get("Content-Disposition")
-	if contentDisposition == "" {
-		return http.StatusInternalServerError, fmt.Errorf("no Content-Disposition header in response")
-	}
 
-	// Parse the Content-Disposition header to get the filename parameter
-	_, params, err := mime.ParseMediaType(contentDisposition)
-	if err != nil {
-		return http.StatusInternalServerError, fmt.Errorf("error parsing Content-Disposition header: %v", err)
-	}
-	fileName, ok := params["filename"]
-	if !ok {
-		return http.StatusInternalServerError, fmt.Errorf("no filename parameter in Content-Disposition header")
+	var fileName string
+	var ok bool
+
+	if contentDisposition != "" {
+		// Parse the Content-Disposition header to get the filename parameter
+		_, params, err := mime.ParseMediaType(contentDisposition)
+		if err != nil {
+			return http.StatusInternalServerError, fmt.Errorf("error parsing Content-Disposition header: %v", err)
+		}
+		fileName, ok = params["filename"]
+		if !ok {
+			return http.StatusInternalServerError, fmt.Errorf("no filename parameter in Content-Disposition header")
+		}
+	} else {
+		// Extract filename from the URL when Content-Disposition header is not present
+		fileName = path.Base(downloadUrl)
 	}
 
 	ex, err := os.Executable()
