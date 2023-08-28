@@ -4,7 +4,7 @@
     <slot /> -->
 
     <div class="downloadBox">
-      <input v-model="downloadLink" placeholder="Paste link here" />
+      <input v-model="downloadLink" placeholder="https://civitai.com/api/download/models/143906" />
       <button @click="downloadFile">Download</button>
     </div>
 
