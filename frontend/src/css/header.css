@@ -55,6 +55,11 @@ header>div div {
   position: relative;
 }
 
+.header > div > input {
+  width: 90%; /* Adjust the value as per your needs */
+  box-sizing: border-box;
+}
+
 header .search-button,
 header .menu-button {
   display: none;
