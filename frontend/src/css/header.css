@@ -347,7 +347,6 @@ body.rtl #search .boxes h3 {
   align-items: center;
   gap:0.5rem;
   padding-top: 0.5rem;
-  width: 100%;
 }
 
 .form-control {
@@ -372,4 +371,8 @@ body.rtl #search .boxes h3 {
 
 .form-control:focus {
   outline-color: #16a34a;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
