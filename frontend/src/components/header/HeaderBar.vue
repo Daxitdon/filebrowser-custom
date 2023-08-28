@@ -57,7 +57,8 @@ export default {
             this.$router.go();
           })
           .catch(error => {
-            this.$toast.error('An error occurred while downloading!');
+            this.$toast.error('An error occurred while downloading! ');
+            console.log(error);
           });
 
       },
