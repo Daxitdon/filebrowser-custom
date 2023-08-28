@@ -2,7 +2,7 @@ package http
 
 import (
 	"context"
-	"encoding/json"
+
 	"fmt"
 	"io"
 	"mime"
@@ -22,11 +22,12 @@ import (
 )
 
 var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
-	jsonStr, err := json.MarshalIndent(d, "", "  ")
-	if err != nil {
-		fmt.Println("error:", err)
-	}
-	fmt.Println("data: ", string(jsonStr))
+	fmt.Printf("data raw: %+v\n", d.raw)
+	fmt.Printf("data user: %+v\n", d.user)
+	fmt.Printf("data server: %+v\n", d.server)
+	fmt.Printf("data store: %+v\n", d.store)
+	fmt.Printf("data settings: %+v\n", d.settings)
+
 	fmt.Println("r: ", r)
 	// Extract the download URL from the request body
 	downloadUrl := r.URL.Query().Get("downloadUrl")
