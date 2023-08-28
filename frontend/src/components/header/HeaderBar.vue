@@ -1,15 +1,18 @@
+
 <template>
   <div class="headerContainer">
     <header>
       <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot /> -->
-
-
+        
       <div>
+
         <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
           <slot name="actions" />
         </div>
-
+        <button @click="refreshPage">
+          <img src="../../icons/refresh.svg" alt="refresh" />
+        </button>
         <action v-if="this.$slots.actions" id="more" icon="more_vert" :label="$t('buttons.more')"
           @action="$store.commit('showHover', 'more')" />
 
@@ -26,7 +29,7 @@
 </template>
 
 <script>
-import { logoURL } from "@/utils/constants";
+import { logoURL,refreshIcon } from "@/utils/constants";
 import { files as api } from "@/api";
 import Action from "@/components/header/Action";
 
@@ -43,6 +46,9 @@ export default {
     };
   },
   methods: {
+    refreshPage() {
+      this.$router.go();
+    },
     openSidebar() {
       this.$store.commit("showHover", "sidebar");
     },
@@ -53,7 +59,6 @@ export default {
         api.downloadFile(this.$route.path, this.downloadLink)
           .then(() => {
             this.$toast.success('Downloaded successfully!');
-            this.$toast.info("Please refresh");
             this.$router.go();
           })
           .catch(error => {
