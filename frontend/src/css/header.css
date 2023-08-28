@@ -15,6 +15,14 @@ header {
   align-items: center;
 }
 
+.headerContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 header > * {
   flex: 0 0 auto;
 }
@@ -27,13 +35,14 @@ header title {
   text-overflow: ellipsis;
   font-size: 1.2em;
 }
-header .downloadBox {
+.downloadBox {
+  margin-top: 0.2rem;
   width: 90%;
   display: flex;
 
 }
 
-header .downloadBox input {
+.downloadBox input {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -52,7 +61,7 @@ header .downloadBox input {
     width: 90%;
 }
 
-header .downloadBox button {
+.downloadBox button {
   cursor: pointer;
   border: 1px solid gray;
 
