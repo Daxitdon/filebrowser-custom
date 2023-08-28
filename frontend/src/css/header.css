@@ -28,13 +28,17 @@ header {
   border: none;
   padding: 0;
   margin: 0;
+  cursor: pointer;
 }
 .downloadButton img {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
 }
 
-
+.downloadButton button:hover {
+  background-color: #e5e5e5;
+  border-radius: 50%;
+}
 header > * {
   flex: 0 0 auto;
 }

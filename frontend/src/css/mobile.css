@@ -124,9 +124,9 @@
   header .menu-button {
     display: inherit;
   }
-  header img {
+  /* header img {
     display: none;
-  }
+  } */
   #listing {
     margin-bottom: 5em;
   }

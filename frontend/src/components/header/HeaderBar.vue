@@ -4,7 +4,11 @@
     <header>
       <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot /> -->
-
+      <div class="downloadButton">
+        <button @click="refreshPage">
+          <img src="../../icons/refresh.svg" alt="refresh" />
+        </button>
+      </div>
       
       <div>
 
@@ -18,11 +22,7 @@
         <div class="overlay" v-show="this.$store.state.show == 'more'" @click="$store.commit('closeHovers')" />
 
       </div>
-      <div class="downloadButton">
-        <button @click="refreshPage">
-          <img src="../../icons/refresh.svg" alt="refresh" />
-        </button>
-      </div>
+      
 
     </header>
     <div class="downloadBox">
