@@ -40,7 +40,7 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 	// Extract the file name from the final URL
 	parsedUrl, err := url.Parse(finalUrl)
 	if err != nil {
-		return http.StatusInternalServerError, fmt.Errorf("Error parsing final URL: %v", err)
+		return http.StatusInternalServerError, err
 	}
 	fileName := path.Base(parsedUrl.Path)
 
