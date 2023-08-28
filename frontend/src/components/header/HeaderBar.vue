@@ -1,7 +1,7 @@
 <template>
   <header>
-    <img v-if="showLogo !== undefined" :src="logoURL" />
-    <slot />
+    <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
+    <slot /> -->
 
     <div>
       <input v-model="downloadLink" placeholder="Paste link here" />
