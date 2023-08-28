@@ -30,8 +30,7 @@ header title {
 header .downloadBox {
   width: 90%;
   display: flex;
-  font-family: sans-serif;
-  font-family:monospace ;
+
 }
 
 header .downloadBox input {
