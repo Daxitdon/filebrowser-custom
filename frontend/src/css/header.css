@@ -341,3 +341,33 @@ body.rtl #search .boxes h3 {
   color: #fff !important;
   font-size: 3.5em;
 }
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap:0.5rem;
+}
+
+.form-control {
+  border: 1px solid #63bf76;
+  border-radius: 0.25rem;
+  padding: 0.4rem 0.5rem;
+  font-size: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #63bf76;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: #16a34a;
+}
+
+.form-control:focus {
+  outline-color: #16a34a;
+}

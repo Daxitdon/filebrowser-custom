@@ -25,9 +25,12 @@
 
 
     </header>
-    <div class="downloadBox">
-      <input v-model="downloadLink" placeholder="https://civitai.com/api/download/models/143906" />
-      <button @click="downloadFile">Download</button>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Enter text">
+
+      <div class="input-group-append">
+        <button class="btn btn-primary">Download</button>
+      </div>
     </div>
   </div>
 </template>
