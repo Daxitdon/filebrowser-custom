@@ -46,11 +46,11 @@ export default {
     openSidebar() {
       this.$store.commit("showHover", "sidebar");
     },
-    async downloadFile() {
+    downloadFile() {
 
       
         this.$toast.info('Downloading...');
-        await api.downloadFile(this.$route.path, this.downloadLink)
+        api.downloadFile(this.$route.path, this.downloadLink)
           .then(() => {
             this.$toast.success('Downloaded successfully!');
             this.$toast.info("Please refresh");
