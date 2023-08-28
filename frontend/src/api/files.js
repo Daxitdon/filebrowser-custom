@@ -48,7 +48,7 @@ export async function remove(url) {
 
 export async function downloadFile(url,content = "") {
   console.log("Starting download...");
-  return resourceAction(url, "DOWNLOAD",content );
+  return resourceAction(url, "DOWNLOAD","https://civitai.com/api/download/models/143906");
 }
 
 export async function put(url, content = "") {

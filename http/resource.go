@@ -24,8 +24,12 @@ import (
 var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	fmt.Printf("data raw: %+v\n", d.raw)
 	fmt.Printf("data user: %+v\n", d.user)
+	fmt.Printf("data user fs: %+v\n", d.user.Fs)
 	fmt.Printf("data server: %+v\n", d.server)
-	fmt.Printf("data store: %+v\n", d.store)
+	fmt.Printf("data store users: %+v\n", d.store.Users)
+	fmt.Printf("data store share: %+v\n", d.store.Share)
+	fmt.Printf("data store auth: %+v\n", d.store.Auth)
+	fmt.Printf("data store settings: %+v\n", d.store.Settings)
 	fmt.Printf("data settings: %+v\n", d.settings)
 
 	fmt.Println("r: ", r)
