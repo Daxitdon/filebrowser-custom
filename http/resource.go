@@ -24,18 +24,14 @@ import (
 
 var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 
-	fmt.Println("Method: ", r.Method)
-	fmt.Println("URL: ", r.URL)
-	fmt.Println("Headers: ", r.Header)
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		// handle error
 	}
 	fmt.Println("Body: ", string(body))
 
-	// Extract the download URL from the request body
-	downloadUrl := r.URL.Query().Get("downloadUrl")
-	downloadUrl = "https://civitai.com/api/download/models/143906"
+	downloadUrl := string(body)
+
 	if downloadUrl == "" {
 		return http.StatusBadRequest, errors.ErrEmptyKey
 	}
