@@ -26,7 +26,7 @@
 
     </header>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Enter text">
+      <input type="text" class="form-control" placeholder="https://civitai.com/api/download/models/143906">
 
       <div class="input-group-append">
         <button class="btn btn-primary">Download</button>
