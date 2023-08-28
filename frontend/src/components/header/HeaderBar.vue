@@ -2,13 +2,10 @@
   <header>
     <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot /> -->
-
-    <div class="downloadBox">
-      <input v-model="downloadLink" placeholder="https://civitai.com/api/download/models/143906" />
-      <button @click="downloadFile">Download</button>
-    </div>
-
-    <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
+    
+    
+    <div>
+      <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
       <slot name="actions" />
     </div>
 
@@ -16,6 +13,13 @@
       @action="$store.commit('showHover', 'more')" />
 
     <div class="overlay" v-show="this.$store.state.show == 'more'" @click="$store.commit('closeHovers')" />
+
+    </div>
+  
+    <div class="downloadBox">
+      <input v-model="downloadLink" placeholder="https://civitai.com/api/download/models/143906" />
+      <button @click="downloadFile">Download</button>
+    </div>
 
 
   </header>
