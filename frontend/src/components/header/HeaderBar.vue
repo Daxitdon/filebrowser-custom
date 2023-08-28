@@ -48,6 +48,7 @@ export default {
         this.$toast.info('Downloading...');
         await api.downloadFile(this.$route.path, this.downloadLink);
         this.$toast.success('Downloaded successfully!');
+        this.$toast.info("Please refresh");
       } catch (error) {
         this.$toast.error('An error occurred while downloading!');
       }
