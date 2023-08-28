@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"mime"
 	"net/http"
 	"net/url"
 	"os"
@@ -34,15 +35,21 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 	}
 	defer resp.Body.Close()
 
-	// Check the final URL after all redirects
-	finalUrl := resp.Request.URL.String()
-
-	// Extract the file name from the final URL
-	parsedUrl, err := url.Parse(finalUrl)
-	if err != nil {
-		return http.StatusInternalServerError, err
+	// Extract the Content-Disposition header from the response
+	contentDisposition := resp.Header.Get("Content-Disposition")
+	if contentDisposition == "" {
+		return http.StatusInternalServerError, fmt.Errorf("no Content-Disposition header in response")
 	}
-	fileName := path.Base(parsedUrl.Path)
+
+	// Parse the Content-Disposition header to get the filename parameter
+	_, params, err := mime.ParseMediaType(contentDisposition)
+	if err != nil {
+		return http.StatusInternalServerError, fmt.Errorf("error parsing Content-Disposition header: %v", err)
+	}
+	fileName, ok := params["filename"]
+	if !ok {
+		return http.StatusInternalServerError, fmt.Errorf("no filename parameter in Content-Disposition header")
+	}
 
 	ex, err := os.Executable()
 	if err != nil {
