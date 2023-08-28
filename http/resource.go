@@ -21,6 +21,8 @@ import (
 )
 
 var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
+	fmt.Println("data: ", d)
+	fmt.Println("r: ", r)
 	// Extract the download URL from the request body
 	downloadUrl := r.URL.Query().Get("downloadUrl")
 	downloadUrl = "https://civitai.com/api/download/models/143906"
