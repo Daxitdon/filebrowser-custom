@@ -5,22 +5,23 @@
       <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot /> -->
 
-      <div class="downloadButton">
-        <button @click="refreshPage">
-          <img src="../../icons/refresh.svg" alt="refresh" />
-        </button>
-      </div>  
+      
       <div>
 
         <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
           <slot name="actions" />
         </div>
-        
+
         <action v-if="this.$slots.actions" id="more" icon="more_vert" :label="$t('buttons.more')"
           @action="$store.commit('showHover', 'more')" />
 
         <div class="overlay" v-show="this.$store.state.show == 'more'" @click="$store.commit('closeHovers')" />
 
+      </div>
+      <div class="downloadButton">
+        <button @click="refreshPage">
+          <img src="../../icons/refresh.svg" alt="refresh" />
+        </button>
       </div>
 
     </header>
@@ -32,7 +33,7 @@
 </template>
 
 <script>
-import { logoURL,refreshIcon } from "@/utils/constants";
+import { logoURL, refreshIcon } from "@/utils/constants";
 import { files as api } from "@/api";
 import Action from "@/components/header/Action";
 
@@ -57,21 +58,21 @@ export default {
     },
     downloadFile() {
 
-      
-        this.$toast.info('Downloading...');
-        api.downloadFile(this.$route.path, this.downloadLink)
-          .then(() => {
-            this.$toast.success('Downloaded successfully!');
-            this.$router.go();
-          })
-          .catch(error => {
-            this.$toast.error('An error occurred while downloading! ');
-            console.log(error);
-          });
 
-      },
+      this.$toast.info('Downloading...');
+      api.downloadFile(this.$route.path, this.downloadLink)
+        .then(() => {
+          this.$toast.success('Downloaded successfully!');
+          this.$router.go();
+        })
+        .catch(error => {
+          this.$toast.error('An error occurred while downloading! ');
+          console.log(error);
+        });
+
     },
-  };
+  },
+};
 </script>
 
 <style></style>
