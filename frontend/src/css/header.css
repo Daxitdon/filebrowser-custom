@@ -10,6 +10,7 @@ header {
   width: 100%;
   padding: 0;
   display: flex;
+  justify-content: space-between;
   padding: 0.5em 0.5em 0.5em 1em;
   align-items: center;
 }
@@ -25,6 +26,13 @@ header title {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 1.2em;
+}
+header .downloadBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 header .overlay {

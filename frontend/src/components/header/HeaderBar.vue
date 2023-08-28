@@ -3,7 +3,7 @@
     <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot /> -->
 
-    <div>
+    <div class="downloadBox">
       <input v-model="downloadLink" placeholder="Paste link here" />
       <button @click="downloadFile">Download</button>
     </div>
