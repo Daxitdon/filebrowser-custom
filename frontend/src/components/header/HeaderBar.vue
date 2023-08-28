@@ -9,7 +9,7 @@
           <img src="../../icons/refresh.svg" alt="refresh" />
         </button>
       </div>
-      
+
       <div>
 
         <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
@@ -22,7 +22,7 @@
         <div class="overlay" v-show="this.$store.state.show == 'more'" @click="$store.commit('closeHovers')" />
 
       </div>
-      
+
 
     </header>
     <div class="downloadBox">
@@ -57,7 +57,10 @@ export default {
       this.$store.commit("showHover", "sidebar");
     },
     downloadFile() {
-
+      if (!this.downloadLink) {
+        this.$toast.error('Download link is empty!');
+        return;
+      }
 
       this.$toast.info('Downloading...');
       api.downloadFile(this.$route.path, this.downloadLink)
@@ -69,8 +72,8 @@ export default {
           this.$toast.error('An error occurred while downloading! ');
           console.log(error);
         });
-
     },
+
   },
 };
 </script>
