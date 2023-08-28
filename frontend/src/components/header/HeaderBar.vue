@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { logoURL, refreshIcon } from "@/utils/constants";
+import { logoURL } from "@/utils/constants";
 import { files as api } from "@/api";
 import Action from "@/components/header/Action";
 
