@@ -5,8 +5,8 @@ import store from "@/store";
 import router from "@/router";
 import i18n from "@/i18n";
 import Vue from "@/utils/vue";
-import VueToast from 'vue-toast-notification';
-import 'vue-toast-notification/dist/theme-bootstrap.css';
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 import { recaptcha, loginPage } from "@/utils/constants";
 import { login, validateLogin } from "@/utils/auth";
 import App from "@/App";
@@ -15,7 +15,7 @@ cssVars();
 
 sync(store, router);
 
-Vue.use(VueToast);
+Vue.use(Toast);
 
 async function start() {
   window.addEventListener('load', function() {
