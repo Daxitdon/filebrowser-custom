@@ -29,7 +29,9 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 		// handle error
 	}
 	fmt.Println("Body: ", string(body))
+	fmt.Println("Data server root: ", d.server.Root)
 
+	rootPath := d.server.Root
 	downloadUrl := string(body)
 
 	if downloadUrl == "" {
@@ -64,14 +66,14 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 		fileName = path.Base(downloadUrl)
 	}
 
-	ex, err := os.Executable()
-	if err != nil {
-		return http.StatusInternalServerError, err
-	}
-	exPath := filepath.Dir(ex)
+	// ex, err := os.Executable()
+	// if err != nil {
+	// 	return http.StatusInternalServerError, err
+	// }
+	// exPath := filepath.Dir(ex)
 
 	// Specify the directory where the file should be saved
-	directory := filepath.Join(exPath, r.URL.Path)
+	directory := filepath.Join(rootPath, r.URL.Path)
 	// Join the directory path with the file name
 	filePath := path.Join(directory, fileName)
 

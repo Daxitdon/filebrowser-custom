@@ -3,6 +3,11 @@
     <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot />
 
+    <div>
+      <input v-model="downloadLink" placeholder="Paste link here" />
+      <button @click="downloadFile">Download</button>
+    </div>
+
     <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
       <slot name="actions" />
     </div>
@@ -21,10 +26,7 @@
       @click="$store.commit('closeHovers')"
     />
 
-    <div>
-      <input v-model="downloadLink" placeholder="Paste link here" />
-      <button @click="downloadFile">Download</button>
-    </div>
+    
   </header>
 </template>
 
