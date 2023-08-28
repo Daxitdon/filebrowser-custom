@@ -30,15 +30,27 @@ header title {
 header .downloadBox {
   width: 90%;
   display: flex;
+  font-family: sans-serif;
+  font-family:monospace ;
 }
 
 header .downloadBox input {
+  padding: 5px 5px 5px 7px;
   flex-grow: 1;
   box-sizing: border-box;
 }
 
 header .downloadBox button {
-  flex-grow: 0;
+  padding: 12px 40px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 1px rgb(131, 131, 219) ;
+  border: 1px solid gray;
+  font-size: 20px;
+}
+
+header .downloadBox button:hover {
+  background-color: cadetblue;
+  color: rgb(246, 244, 248);
 }
 
 header .overlay {
