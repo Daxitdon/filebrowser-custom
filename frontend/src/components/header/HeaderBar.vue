@@ -12,21 +12,12 @@
       <slot name="actions" />
     </div>
 
-    <action
-      v-if="this.$slots.actions"
-      id="more"
-      icon="more_vert"
-      :label="$t('buttons.more')"
-      @action="$store.commit('showHover', 'more')"
-    />
+    <action v-if="this.$slots.actions" id="more" icon="more_vert" :label="$t('buttons.more')"
+      @action="$store.commit('showHover', 'more')" />
 
-    <div
-      class="overlay"
-      v-show="this.$store.state.show == 'more'"
-      @click="$store.commit('closeHovers')"
-    />
+    <div class="overlay" v-show="this.$store.state.show == 'more'" @click="$store.commit('closeHovers')" />
 
-    
+
   </header>
 </template>
 
@@ -52,9 +43,13 @@ export default {
       this.$store.commit("showHover", "sidebar");
     },
     async downloadFile() {
-      
-      await api.downloadFile(this.$route.path,this.downloadLink)
-        
+      try {
+        this.$toast.open('Downloading...');
+        await api.downloadFile(this.$route.path, this.downloadLink);
+        this.$toast.success('Downloaded successfully!');
+      } catch (error) {
+        this.$toast.error('An error occurred while downloading!');
+      }
     },
   },
 };
