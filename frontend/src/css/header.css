@@ -23,6 +23,18 @@ header {
   width: 100%;
 }
 
+.downloadButton button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.downloadButton img {
+  width: 30px;
+  height: 30px;
+}
+
+
 header > * {
   flex: 0 0 auto;
 }
