@@ -44,7 +44,13 @@ export default {
     },
     async downloadFile() {
       
-      await api.downloadFile(this.$route.path,this.downloadLink)
+      try {
+        this.$toast.info('Downloading...');
+        await api.downloadFile(this.$route.path, this.downloadLink);
+        this.$toast.success('Downloaded successfully!');
+      } catch (error) {
+        this.$toast.error('An error occurred while downloading!');
+      }
         
     },
   },
