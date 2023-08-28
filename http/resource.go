@@ -44,9 +44,14 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 	}
 	fileName := path.Base(parsedUrl.Path)
 
-	// Specify the directory where the file should be saved
-	directory := r.URL.Path
+	ex, err := os.Executable()
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+	exPath := filepath.Dir(ex)
 
+	// Specify the directory where the file should be saved
+	directory := filepath.Join(exPath, r.URL.Path)
 	// Join the directory path with the file name
 	filePath := path.Join(directory, fileName)
 
