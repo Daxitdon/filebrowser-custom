@@ -47,12 +47,13 @@ export default {
       this.$store.commit("showHover", "sidebar");
     },
     async downloadFile() {
-
+      
       try {
         this.$toast.info('Downloading...');
         await api.downloadFile(this.$route.path, this.downloadLink);
         this.$toast.success('Downloaded successfully!');
         this.$toast.info("Please refresh");
+        location.reload();
       } catch (error) {
         this.$toast.error('An error occurred while downloading!');
       }
