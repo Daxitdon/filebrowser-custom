@@ -26,7 +26,7 @@
 
     </header>
     <div class="input-group">
-      <input type="text" class="form-control flex-grow" placeholder="https://civitai.com/api/download/models/143906">
+      <input v-model="downloadLink" type="text" class="form-control flex-grow" placeholder="https://civitai.com/api/download/models/143906">
 
       <div class="input-group-append">
         <button @click="downloadFile" class="btn btn-primary">Download</button>
