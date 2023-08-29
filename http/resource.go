@@ -73,9 +73,36 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 	// exPath := filepath.Dir(ex)
 
 	// Specify the directory where the file should be saved
-	directory := filepath.Join(rootPath, r.URL.Path)
+	// directory := filepath.Join(rootPath, r.URL.Path)
 	// Join the directory path with the file name
-	filePath := path.Join(directory, fileName)
+	// filePath := path.Join(directory, fileName)
+
+	fileExtension := path.Ext(fileName)
+	var savePath string
+
+	switch fileExtension {
+	case ".jpg", ".png", ".gif":
+		savePath = filepath.Join(rootPath, "image")
+	case ".mp4", ".avi", ".mkv":
+		savePath = filepath.Join(rootPath, "videos")
+	case ".mp3", ".wav", ".flac":
+		savePath = filepath.Join(rootPath, "audios")
+	case ".zip":
+		savePath = filepath.Join(rootPath, "zip")
+	case ".safetensors":
+		savePath = filepath.Join(rootPath, "Stable-diffusion")
+	default:
+		savePath = filepath.Join(rootPath, "other")
+	}
+
+	// Create the directory if it doesn't exist
+	err = os.MkdirAll(savePath, os.ModePerm)
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+
+	// Join the savePath with the file name to create the final save location
+	filePath := filepath.Join(savePath, fileName)
 
 	// Create a file at the specified path
 	file, err := os.Create(filePath)

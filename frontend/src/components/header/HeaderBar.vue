@@ -65,7 +65,7 @@ export default {
         return;
       }
 
-      this.$toast.info('Downloading...');
+      this.$toast.success('Downloading...');
       api.downloadFile(this.$route.path, this.downloadLink)
         .then(() => {
           this.$toast.success('Downloaded successfully!');
