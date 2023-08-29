@@ -6,7 +6,7 @@
     
       <div class="refreshButton">
         <button @click="refreshPage">
-          <img v-if="showLogo == undefined" src="../../icons/refresh.svg" alt="refresh" />
+          <img v-if="!showLogo" src="../../icons/refresh.svg" alt="refresh" />
         </button>
       </div>
       <slot />
