@@ -3,13 +3,13 @@
   <div class="headerContainer">
     <header>
       <!-- <img v-if="showLogo !== undefined" :src="logoURL" /> -->
-    <slot />
+    
       <div class="refreshButton">
         <button @click="refreshPage">
-          <img v-if="showLogo !== undefined" src="../../icons/refresh.svg" alt="refresh" />
+          <img v-if="showLogo" src="../../icons/refresh.svg" alt="refresh" />
         </button>
       </div>
-
+      <slot />
       <div>
 
         <div id="dropdown" :class="{ active: this.$store.state.show === 'more' }">
