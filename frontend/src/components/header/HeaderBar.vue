@@ -2,13 +2,13 @@
 <template>
   <div class="headerContainer">
     <header>
-      <img v-if="showLogo !== undefined" alt="Logo" />
+      <!-- <img v-if="showLogo !== undefined" :src="logoURL" /> -->
     <slot />
-      <!-- <div class="refreshButton">
+      <div class="refreshButton">
         <button @click="refreshPage">
-          <img src="../../icons/refresh.svg" alt="refresh" />
+          <img v-if="showLogo !== undefined" src="../../icons/refresh.svg" alt="refresh" />
         </button>
-      </div> -->
+      </div>
 
       <div>
 
