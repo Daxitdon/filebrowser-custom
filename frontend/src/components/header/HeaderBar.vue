@@ -2,8 +2,8 @@
 <template>
   <div class="headerContainer">
     <header>
-      <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
-    <slot /> -->
+      <img v-if="showLogo !== undefined" :src="logoURL" />
+    <slot />
       <!-- <div class="refreshButton">
         <button @click="refreshPage">
           <img src="../../icons/refresh.svg" alt="refresh" />
