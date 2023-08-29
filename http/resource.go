@@ -81,13 +81,13 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 	var savePath string
 
 	switch fileExtension {
-	case ".jpg", ".png", ".gif":
+	case ".jpg", ".png", ".gif", ".jpeg", ".webp", ".tiff", ".tif", ".bmp", ".svg":
 		savePath = filepath.Join(rootPath, "image")
-	case ".mp4", ".avi", ".mkv":
+	case ".mp4", ".avi", ".mkv", ".mov", ".wmv", ".flv", ".webm":
 		savePath = filepath.Join(rootPath, "videos")
-	case ".mp3", ".wav", ".flac":
+	case ".mp3", ".wav", ".flac", ".ogg", ".m4a", ".wma":
 		savePath = filepath.Join(rootPath, "audios")
-	case ".zip":
+	case ".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz", ".zst", ".lz4", ".lzo", ".z":
 		savePath = filepath.Join(rootPath, "zip")
 	case ".safetensors":
 		savePath = filepath.Join(rootPath, "Stable-diffusion")
@@ -104,6 +104,7 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 	// Join the savePath with the file name to create the final save location
 	filePath := filepath.Join(savePath, fileName)
 
+	fmt.Println("filepath: ", filePath)
 	// Create a file at the specified path
 	file, err := os.Create(filePath)
 	if err != nil {
