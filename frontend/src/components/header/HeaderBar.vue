@@ -29,7 +29,7 @@
       <input type="text" class="form-control flex-grow" placeholder="https://civitai.com/api/download/models/143906">
 
       <div class="input-group-append">
-        <button class="btn btn-primary">Download</button>
+        <button @click="downloadFile" class="btn btn-primary">Download</button>
       </div>
     </div>
   </div>
