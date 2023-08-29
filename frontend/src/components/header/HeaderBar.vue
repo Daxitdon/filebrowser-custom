@@ -2,7 +2,7 @@
 <template>
   <div class="headerContainer">
     <header>
-      <img v-if="showLogo !== undefined" :src="logoURL" />
+      <img v-if="showLogo !== undefined" alt="Logo" />
     <slot />
       <!-- <div class="refreshButton">
         <button @click="refreshPage">
