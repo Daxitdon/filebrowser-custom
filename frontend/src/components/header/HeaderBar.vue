@@ -4,11 +4,11 @@
     <header>
       <!-- <img v-if="showLogo !== undefined" :src="logoURL" />
     <slot /> -->
-      <div class="downloadButton">
+      <!-- <div class="refreshButton">
         <button @click="refreshPage">
           <img src="../../icons/refresh.svg" alt="refresh" />
         </button>
-      </div>
+      </div> -->
 
       <div>
 
