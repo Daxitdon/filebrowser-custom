@@ -89,7 +89,7 @@ var resourceDownloadHandler = withUser(func(w http.ResponseWriter, r *http.Reque
 		savePath = filepath.Join(rootPath, "audios")
 	case ".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz", ".zst", ".lz4", ".lzo", ".z":
 		savePath = filepath.Join(rootPath, "zip")
-	case ".safetensors":
+	case ".safetensors", ".ckpt":
 		savePath = filepath.Join(rootPath, "Stable-diffusion")
 	default:
 		savePath = filepath.Join(rootPath, "other")
